@@ -1,0 +1,26 @@
+﻿@model IEnumerable<u19088265_HomeWork03.Models.FileModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Images of any file type</h2>
+
+<h5>.........."Media/Images" folder</h5>
+
+<div class="container">
+    <div class="row">
+        @foreach (var file in Model)
+         {
+            <div class="col-lg-4">
+
+                <img src="~/Media/Images/@file.FileName" style="width:50%; height:50%;" />
+                <p>@file.FileName</p>
+                <button type="button" class="btn btn-success"> @Html.ActionLink("Download", "DownloadFile", new { fileName = file.FileName }) </button>
+                <button type="button" class="btn btn-danger"> @Html.ActionLink("Delete", "DeleteFile", new { fileName = file.FileName }) </button>
+
+
+            </div>
+         }
+        </div>
+</div>

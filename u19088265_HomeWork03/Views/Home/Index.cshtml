@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Media Uploader</h1>
+<h3>The best platform to suit your needs</h3>
+    <section style="float: left; width: 65%; background: ghostwhite;">
+        <h3>
+            Description
+        </h3>
+        <p>This is a file uploading website, that allows the user to upload files of different types: documents, images and videos. The uploaded files will the be listed in the table, located in the 'Files' tab of the website. Image files will be further displayed in the 'Images' tab, for the user's convenience.
+        <br />
+        <br />
+        Video files will play automatically when the user navigates to the 'Videos' tab. This is where all uploaded videos will be displayed. NOTE: any file can be downloaded when the 'Download' button is clicked. This system allows for uploaded files to be in a "Media", whereby each file type will be categorized by its extension and then stored in the corresponding subfolder.
+        <br />
+        <br />
+        Files are to be chosen from the computer and then uploaded as stated above. The user will be notified accordingly.
+        </p>
+        <p></p>
+    </section>
+
+    <section style="float:right; width:35%;background: ghostwhite;">
+        <h3>Option Selection</h3>
+
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            //<span>Document</span> <input type="radio" name="doc" id="doc"> <br />
+            <span>Document</span> @Html.RadioButton("FileType", "doc") <br />
+            <span>Image</span>@Html.RadioButton("FileType", "img") <br />
+            <span>Video</span>@Html.RadioButton("FileType", "vid") <br />
+            //<span>Image</span> <input type="radio" name="img" id="img"> <br />
+            //<span>Video</span> <input type="radio" name="vid" id="vid"> <br />
+            <br />
+            @Html.TextBox("UploadedFile", "", new { type = "file" })
+            //<input type="file" name="UploadedFile" id="UploadedFile" />
+            <br />
+            <br />
+            <input type="submit" value="Submit" name="submit" style="margin-bottom:9%">
+        }
+
+        @{
+            if (ViewBag.Message != null)
+            {
+                @ViewBag.Message;
+            }
+        }
+    </section>
+
+
+
+
+
